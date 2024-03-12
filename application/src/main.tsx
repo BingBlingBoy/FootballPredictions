@@ -13,14 +13,16 @@ const queryClient = new QueryClient({defaultOptions: {
 
 }});
 
+const DOMAIN = import.meta.env.VITE_AUTH0_DOMAIN as string
+const CLIENT_ID = import.meta.env.REACT_APP_AUTH0_CLIENT_ID as string
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Auth0Provider
-    domain="{yourDomain}"
-    clientId="{yourClientId}"
+    domain={DOMAIN}
+    clientId={CLIENT_ID}
     authorizationParams={{
       redirect_uri: window.location.origin
     }}

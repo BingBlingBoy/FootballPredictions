@@ -1,4 +1,4 @@
-import Login from "./Login"
+import LoginButton from "./Login"
 import LogoutButton from "./Logout"
 
 const Navigation = () => {
@@ -12,6 +12,8 @@ const Navigation = () => {
                         <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Leagues</a></li>
                         <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Competitions</a></li>
                         <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Signup/Login</a></li>
+                        <LoginButton />
+                        <LogoutButton />
                     </ul> 
                 </div>
             </div>
