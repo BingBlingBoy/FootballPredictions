@@ -1,7 +1,10 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./Login"
 import LogoutButton from "./Logout"
+import Profile from "./Profile"
 
 const Navigation = () => {
+    const { isAuthenticated } = useAuth0();
     const content = 
     (
         <>
@@ -11,9 +14,15 @@ const Navigation = () => {
                     <ul className="flex flex-row gap-8">
                         <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Leagues</a></li>
                         <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Competitions</a></li>
-                        <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Signup/Login</a></li>
-                        <LoginButton />
-                        <LogoutButton />
+                        {isAuthenticated &&
+                            <div className="bg-white p-2 rounded-lg font-semibold outline outline-black">
+                                <Profile />
+                            </div>
+                        }
+                        <div className="bg-white p-2 rounded-lg font-semibold outline outline-black">
+                            <LoginButton />
+                            <LogoutButton />
+                        </div>
                     </ul> 
                 </div>
             </div>
