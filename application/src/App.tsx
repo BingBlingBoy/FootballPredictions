@@ -2,7 +2,9 @@
 // import { api } from "../convex/_generated/api";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import League from "./pages/League";
 import Profile from "./pages/Profile";
+import Navigation from "./components/Navigation";
 
 function App() {
   // const tasks = useQuery(api.task.get);
@@ -17,10 +19,13 @@ function App() {
 
   const content = (
     <>
+    
       <Router>
+        <Navigation />
         <Routes>
           <Route path="/" element={<Index />}/>
           <Route path="/profile" element={<Profile />}/>
+          <Route path="/league" element={<League />}/>
         </Routes>
       </Router>  
     </>

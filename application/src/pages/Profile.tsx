@@ -1,5 +1,4 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import Navigation from "../components/Navigation";
 
 const Profile = () => {
     
@@ -7,7 +6,6 @@ const Profile = () => {
     const content =
     (
       <>
-        <Navigation /> 
         {isAuthenticated && (
           <div>
             <img src={user?.picture} alt={user?.name} />

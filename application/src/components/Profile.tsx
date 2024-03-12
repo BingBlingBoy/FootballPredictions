@@ -5,13 +5,9 @@ const Profile = () => {
     const { isAuthenticated } = useAuth0();
     const navigate = useNavigate();
     
-    const viewProfile = () => {
-        navigate('/profile')
-    }
-
     return (
         isAuthenticated && (
-            <button onClick={() => viewProfile()}>
+            <button onClick={() => navigate("/profile")}>
                 Profile
             </button>
         )
