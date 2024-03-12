@@ -3,6 +3,7 @@ import LoginButton from "./Login"
 import LogoutButton from "./Logout"
 import Profile from "./Profile"
 import Home from "./Home";
+import League from "./League";
 
 const Navigation = () => {
     const { isAuthenticated } = useAuth0();
@@ -13,7 +14,9 @@ const Navigation = () => {
                 <div className="flex justify-between items-center">
                     <Home />
                     <ul className="flex flex-row gap-8">
-                        <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Leagues</a></li>
+                        <div className="bg-white p-2 rounded-lg font-semibold outline outline-black">
+                            <League />
+                        </div>
                         <li className="bg-white p-2 rounded-lg font-semibold outline outline-black"><a href="">Competitions</a></li>
                         {isAuthenticated &&
                             <div className="bg-white p-2 rounded-lg font-semibold outline outline-black">

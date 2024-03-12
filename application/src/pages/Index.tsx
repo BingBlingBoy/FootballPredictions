@@ -49,20 +49,22 @@ const Index = () => {
                         </>
                         :
                         <>
-                            <p className="font-bold text-5xl w-[35ch] text-balance text-white">
-                                EVER WANTED TO PROVE YOUR <span className="text-accent">FOOTBALL KNOWLEDGE</span>. THINK YOUR BETTER THAN ALL YOUR FRIENDS. PROVE IT RIGHT <span className="text-accent">NOW</span> 
-                            </p>
+                            
+                            <div>
+                                <p className="font-bold text-5xl w-[35ch] text-balance text-white">
+                                    EVER WANTED TO PROVE YOUR <span className="text-accent">FOOTBALL KNOWLEDGE</span>. THINK YOUR BETTER THAN ALL YOUR FRIENDS. PROVE IT RIGHT <span className="text-accent">NOW</span> 
+                                </p>
 
-                            <ul className="pt-10">
-                                <li className="text-black bg-white p-5 rounded-lg font-semibold outline outline-black"><a href="#">Click Here to get started</a></li>
-                            </ul>
+                                <ul className="pt-10">
+                                    <li className="text-black bg-white p-5 rounded-lg font-semibold outline outline-black"><a href="#">Click Here to get started</a></li>
+                                </ul>
+                            </div>
                         </>
                     }       
                 </div>
             </div>        
         </>
     )
-// —Pngtree—football players_7078031
     return content
 }
 
