@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    background-color: #FFD900;
+    margin: 0; /* Removes default margin */
+    height: 100%; /* Ensures full vertical coverage */
+    width: 100%; /* Ensures full horizontal coverage */
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+}
