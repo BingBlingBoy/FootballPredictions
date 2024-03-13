@@ -6,7 +6,8 @@ import './index.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; 
 import { Auth0Provider } from '@auth0/auth0-react';
 
-const queryClient = new QueryClient({defaultOptions: {
+const queryClient = new QueryClient(
+  {defaultOptions: {
     queries: {
         refetchOnWindowFocus: false
     }
