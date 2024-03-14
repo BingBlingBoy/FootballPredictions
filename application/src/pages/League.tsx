@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import getDate from "../utils/date";
 import useStoreUserEffect from "../hooks/useStoreUserEffect";
+import { useQuery as UQ, useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 const League = () => {
 
@@ -29,7 +31,10 @@ const League = () => {
 
   const { isAuthenticated } = useAuth0();
   const user = useStoreUserEffect();
-
+  const userInfo = UQ(api.users.getUser);
+  const increment = useMutation(api.users.incrementUserWin)
+  // const wins = useMutation(api.myMutation.send, {body: user});
+  // console.log(wins);
 
   const content =
     (
@@ -39,7 +44,11 @@ const League = () => {
               <div className="bg-white">
                 <h1 className="text-xl font-semibold">You are currently in: 0 leagues</h1>
                 {
-                  <p>Stored user id: {user}</p>
+                  <>
+                  <p>Stored user id {user}</p>
+                  <p>Stored wins: {userInfo?.wins}</p>
+                  <button onClick={() => increment({ userId: userInfo._id })}>Hello</button>
+                  </>
                 }
               </div>
 

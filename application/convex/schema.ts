@@ -8,6 +8,7 @@ export default defineSchema({
     }),
     users: defineTable({
         name: v.string(),
+        wins: v.number(),
         tokenIdentifier: v.string(),
     }).index("by_token", ["tokenIdentifier"]),
 });

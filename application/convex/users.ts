@@ -1,4 +1,6 @@
 import { mutation } from "./_generated/server";
+import { query } from "./_generated/server";
+import { v } from "convex/values";
 
 /**
  * Insert or update the user in a Convex table then return the document's ID.
@@ -37,7 +39,36 @@ export const store = mutation({
     // If it's a new identity, create a new `User`.
     return await ctx.db.insert("users", {
       name: identity.name!,
+      wins: 0,
       tokenIdentifier: identity.tokenIdentifier,
     });
+  },
+});
+
+export const getUser = query({
+    args: {},
+        handler: async (ctx) => {
+          
+          const identity = await ctx.auth.getUserIdentity();
+          if (!identity) {
+            throw new Error("Unauthenticated call to mutation");
+          }
+
+          return await ctx.db
+            .query("users")
+            .withIndex("by_token", (q) =>
+              q.eq("tokenIdentifier", identity.tokenIdentifier),
+            )
+            .unique();
+          // return await ctx.db.get(args.userId)
+    },
+});
+
+export const incrementUserWin = mutation({
+  args: {userId: v.id("users")},
+  handler: async (ctx, args) => {
+    const user = await ctx.db.get(args.userId)
+
+    return await ctx.db.patch(user._id, { wins: user?.wins + 1})
   },
 });
