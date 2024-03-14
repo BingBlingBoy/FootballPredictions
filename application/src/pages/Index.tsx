@@ -1,10 +1,12 @@
+import { useConvexAuth } from "convex/react"
 import football from "../assets/football.png"
 import trophy from "../assets/trophy.jpg"
 import League from "../components/League"
 import { useAuth0 } from "@auth0/auth0-react"
 
 const Index = () => {
-    const { isAuthenticated } = useAuth0()
+    // const { isAuthenticated } = useConvexAuth()
+    const { user, isAuthenticated } = useAuth0()
 
     const content = 
     (
@@ -12,6 +14,7 @@ const Index = () => {
             <div className="min-w-screen max-h-screen items-center">
                 <div className="m-24 flex flex-col items-center justify-center">
                     <h1 className="text-8xl font-bold">FPredictions</h1>    
+                    <h1 className="text-8xl font-bold"></h1>    
                     <h2 className="my-3 text-4xl font-bold w-[30ch] text-center">Make your predictions now to earn points and beat your friends</h2>
                     <img src={football} alt="football image" className="w-64 h-64"/>
                 </div>

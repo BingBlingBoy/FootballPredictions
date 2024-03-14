@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { ConvexReactClient } from "convex/react";
 import './index.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; 
 import { Auth0Provider } from '@auth0/auth0-react';
+import { ConvexProviderWithAuth0 } from 'convex/react-auth0';
 
 const queryClient = new QueryClient(
   {defaultOptions: {
@@ -27,12 +28,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       authorizationParams={{
         redirect_uri: window.location.origin
       }}
+      useRefreshTokens={true}
+      cacheLocation="localstorage"
     >
-      <ConvexProvider client={convex}>
+      <ConvexProviderWithAuth0 client={convex}>
         <QueryClientProvider client={queryClient}>
           <App />
         </QueryClientProvider>
-      </ConvexProvider>
+      </ConvexProviderWithAuth0>
     </Auth0Provider>,
   </React.StrictMode>,
 )

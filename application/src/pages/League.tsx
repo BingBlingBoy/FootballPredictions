@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import getDate from "../utils/date";
-// import { useConvexAuth } from "convex/react";
+import useStoreUserEffect from "../hooks/useStoreUserEffect";
 
 const League = () => {
 
@@ -19,33 +19,34 @@ const League = () => {
         }
       }
     ).then((res) => res.json())
-    // return await fetch(
-    //   'https://ddragon.leagueoflegends.com/cdn/14.5.1/data/en_US/champion/Aatrox.json',
-    //   {
-    //     method: 'GET',
-    //   }
-    // ).then((res) => res.json())
   } 
   
-  const { data: info, isFetched, isFetching } = useQuery({queryKey: ['random fact'], queryFn: getData,});
+  const { data: info, isFetching } = useQuery({queryKey: ['random fact'], queryFn: getData,});
 
   useEffect(() => {
     console.log(info)
-    console.log("Fetched", isFetched)
-    console.log("isFetching", isFetched)
   }, [getData()])
 
   const { isAuthenticated } = useAuth0();
+  const user = useStoreUserEffect();
+
+
   const content =
     (
       <>
 
           <div className="min-w-screen items-center">
+              <div className="bg-white">
+                <h1 className="text-xl font-semibold">You are currently in: 0 leagues</h1>
+                {
+                  <p>Stored user id: {user}</p>
+                }
+              </div>
+
               <div className="flex flex-col items-center justify-center bg-black">
                   <div className="text-white font-bold my-20">
                       <h1 className="text-8xl">FPredictions</h1>    
                       <h2 className="my-3 text-4xl w-[30ch] text-center">Make your predictions now to earn points and beat your friends</h2>
-                      
                   </div>
               </div>
           </div>
@@ -60,8 +61,8 @@ const League = () => {
               ) :
               (
                 <div className="bg-white w-96 h-96">
-                  {info?.data?.map((yes) => (
-                    <p className="text-3xl font-black font-bold">{yes.id}</p>
+                  {info?.data?.map((yes: any, key: any) => (
+                    <p key={key} className="text-3xl font-black font-bold">{yes.id}</p>
                   ))}
                 </div>
               )
